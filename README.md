@@ -15,13 +15,13 @@ Requires a Unix-style environment and Python3 ;)
 
 *Cloning*:
 
-  $> git clone https://github.com/chiarcos/radio_crawl
+    $> git clone https://github.com/chiarcos/radio_crawl
 
 Edit `record-music.sh` with your favorite radios and directory preferences. (See https://onlineradiobox.com to find some.) It currently has a space limit of 1 GB (`-M 1000`) per station *per call*, you might want to change this. Stations differ in quality, so you might want to put each source into a different directory.
 
 ## Recording
 
-  $> radio_crawl/record-music.sh
+    $> radio_crawl/record-music.sh
 
 Now, wait for a day ;)
 
@@ -37,7 +37,7 @@ When running for a few days, this will dump a lot of data. Track the size of you
 
 > Before starting another instance or doing any maintanance or tagging operation, make sure to kill all `streamripper` processes, e.g., using `$> pkill streamripper`
 
-  $> radio_crawl/remove-duplicates.sh /ADD/YOUR/MUSIC_FOLDER(S)
+    $> radio_crawl/remove-duplicates.sh /ADD/YOUR/MUSIC_FOLDER(S)
 
 This will eliminate duplicates (same name, same directory). Should not be run in parallel with `record-music.sh`.
 
@@ -45,11 +45,11 @@ This will eliminate duplicates (same name, same directory). Should not be run in
 
 The retrieved music will mostly lack metadata. For subsequent filtering, we extrapolate ID3v2 genre information from your local music library and last.fm.
 
-  $> python3 radio_crawl/artist2genre.py /ADD/YOUR/LIBRARY
+    $> python3 radio_crawl/artist2genre.py /ADD/YOUR/LIBRARY
 
 This call is optional and will use your local MP3 files (in your library) to bootstrap a mapping from artists to genres. The resulting mapping is stored in `artist2genre.json`.
 
-  $> python3 radio_crawl/artist2genre.py /ADD/YOUR/MUSIC_FOLDER(S) --add_genre
+    $> python3 radio_crawl/artist2genre.py /ADD/YOUR/MUSIC_FOLDER(S) --add_genre
 
 This will update all *.mp3 files in the provided directories with genre information if they lacked it before, using one of the following principles:
 
